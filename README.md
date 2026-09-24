@@ -8,13 +8,13 @@
 
 当前预览直接加载 `lib/client.js`，复用插件的实际配色、品牌组件与侧栏样式。执行 `pnpm build` 后，在项目目录运行 `python3 -m http.server 4176 --bind 127.0.0.1`，打开 `http://127.0.0.1:4176/preview/`；右上角可切换深浅色、打开设置弹窗，左上角可折叠侧栏。预览使用示例会话，快捷操作可填写输入框，新建会话可清空输入；输入框不会发送任务。
 
-以下截图为初版留档，以当前交互预览为准。
+以下截图由 v0.1.2 的实际浏览器 bundle 生成，展示当前图标、背景和响应式布局。
 
 | 主场之夜 | 蓝白看台 |
 | --- | --- |
 | ![主场之夜深色预览](screenshots/shenhua-dark.png) | ![蓝白看台浅色预览](screenshots/shenhua-light.png) |
 
-窄屏折叠状态见 [`screenshots/shenhua-narrow-dark.png`](screenshots/shenhua-narrow-dark.png)。初版主题曾在真实 Harness Web 页面完成加载验证；本轮侧栏与图标调整已在复用浏览器 bundle 的预览中检查。
+窄屏折叠状态见 [`screenshots/shenhua-narrow-dark.png`](screenshots/shenhua-narrow-dark.png)。主题曾在真实 Harness Web 页面完成加载验证；当前侧栏与图标调整已在复用浏览器 bundle 的预览中检查。
 
 ## 安装
 
@@ -34,13 +34,13 @@ dsh --profile web
 ```sh
 pnpm build
 pnpm pack --pack-destination dist
-dsh plugin --profile web add ./dist/dsh-theme-shenhua-0.1.1.tgz
+dsh plugin --profile web add ./dist/dsh-theme-shenhua-0.1.2.tgz
 ```
 
-从 GitHub Release 下载 `dsh-theme-shenhua-0.1.1.tgz` 后，可以直接安装，无需解压：
+从 GitHub Release 下载 `dsh-theme-shenhua-0.1.2.tgz` 后，可以直接安装，无需解压：
 
 ```sh
-dsh plugin --profile web add ./dsh-theme-shenhua-0.1.1.tgz
+dsh plugin --profile web add ./dsh-theme-shenhua-0.1.2.tgz
 dsh --profile web
 ```
 
@@ -57,7 +57,7 @@ dsh plugin --profile web remove dsh-theme-shenhua
 链接式源码安装在重新执行 `pnpm build` 后即可取得最新产物。tarball 安装请先打出新包，再执行：
 
 ```sh
-dsh plugin --profile web update ./dist/dsh-theme-shenhua-0.1.1.tgz
+dsh plugin --profile web update ./dist/dsh-theme-shenhua-0.1.2.tgz
 ```
 
 ## 开发验证

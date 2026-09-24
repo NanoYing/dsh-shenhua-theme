@@ -1,6 +1,6 @@
 {
   "name": "dsh-theme-shenhua",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "上海申花 · 蓝血主场主题，为 DeepSeek Harness 提供浅色、深色与品牌界面。",
   "type": "module",
   "main": "lib/index.js",

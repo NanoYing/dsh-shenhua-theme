@@ -2,6 +2,10 @@
 // Minimal renderer for the theme's stateless brand components. Preview loads
 // the real browser bundle, so tokens, imagery and overrides cannot drift.
 const modeButton = document.querySelector('[data-toggle-mode]');
+fetch('../package.json')
+  .then(response => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`)))
+  .then(pkg => { document.querySelector('[data-package-version]').textContent = pkg.version; })
+  .catch(() => {});
 let tokens = {};
 let mode = new URLSearchParams(location.search).get('mode') === 'light' ? 'light' : 'dark';
 function setMode() {
