@@ -1,0 +1,171 @@
+/* Slot-scoped host overrides. Class suffixes refer to the Harness 0.1.5
+   sidebar/workspace contract; never match generated hashes or translated labels. */
+:global(body) {
+  --shenhua-red: #df3b4e;
+  --shenhua-ink: #003e79;
+  --shenhua-line: color-mix(in srgb, var(--dsw-alias-brand-primary) 13%, transparent);
+  --shenhua-new-session: url("../assets/shenhua-crest-leopard.svg");
+  --shenhua-workspace: url("../assets/shenhua-stadium.svg");
+}
+:global(body[data-ds-dark-theme]) {
+  --shenhua-red: #ef6373;
+  --shenhua-ink: #78b8ff;
+}
+.crestFrame {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px #001d3f24);
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+.crest {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+.wordmark {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+.wordmark strong {
+  color: var(--dsw-alias-label-primary);
+  font-size: 18px;
+  font-weight: 750;
+  letter-spacing: .16em;
+}
+.wordmark > span {
+  margin-top: 6px;
+  color: var(--shenhua-ink);
+  font-family: var(--ds-font-family-code, ui-monospace, monospace);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  white-space: nowrap;
+}
+/* Settings is a fixed descendant of the sidebar: never create a stacking
+   context here (isolation, transform, filter, opacity, or z-index). */
+:global([data-slot="sidebar"] [class*="_root"]:has(> [class*="_logoRow"])) {
+  position: relative;
+  border-right: 1px solid var(--shenhua-line);
+  background:
+    url("../assets/shenhua-spots.svg") top right / 140px 140px repeat,
+    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--dsw-alias-brand-primary) 11%, transparent), transparent 55%),
+    var(--dsw-specific-sidebar-fill);
+}
+:global([data-slot="sidebar"] [class*="_root"]:has(> [class*="_logoRow"])::before) {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #005bac 0 72%, #e6eff9 72% 86%, #df3b4e 86%);
+  pointer-events: none;
+}
+:global([data-slot="sidebar"] [class*="_logoRow"]) {
+  margin-bottom: 14px;
+}
+:global([data-slot="sidebar"] [class*="_brandIdentity"]) {
+  gap: 11px;
+  height: 34px;
+}
+:global([data-slot="sidebar"] button[class*="_newSession"]) {
+  height: 42px;
+  gap: 10px;
+  margin-bottom: 16px;
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 22%, transparent);
+  border-radius: 12px;
+  background: linear-gradient(115deg, #005bac, #004584);
+  box-shadow: 0 4px 12px #003f7920, inset 0 1px 0 #ffffff1a;
+  color: #fff;
+  font-weight: 600;
+}
+:global([data-slot="sidebar"] button[class*="_newSession"]:hover) {
+  background: linear-gradient(115deg, #086abe, #005497);
+  box-shadow: 0 5px 16px #003f7930;
+}
+/* Keep the original button, its accessible name and click handler. */
+:global([data-slot="sidebar"] button[class*="_newSession"] > svg) { display: none; }
+:global([data-slot="sidebar"] button[class*="_newSession"]::before) {
+  content: "";
+  display: block;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  mask: var(--shenhua-new-session) center / contain no-repeat;
+}
+:global([data-slot="sidebar"] [class*="_collapsed"] button[class*="_newSession"]) {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  gap: 0;
+  margin: 0 0 12px;
+}
+:global([data-slot="sidebar"] [class*="_panelRow"]) { border-radius: 10px; }
+:global([data-slot="sidebar.workspaces"] [role="treeitem"][aria-selected="true"]),
+:global([data-slot="sidebar"] [class*="_panelActive"]) {
+  background: var(--dsw-specific-sidebar-nav-item-active);
+  box-shadow: inset 3px 0 0 var(--dsw-alias-brand-primary);
+  color: var(--dsw-alias-label-primary);
+}
+:global([data-slot="sidebar.workspaces"] [class*="_projectRow"]) {
+  color: var(--shenhua-ink);
+  font-weight: 600;
+}
+:global([data-slot="sidebar.workspaces"] [class*="_sessionRow"]) { border-radius: 9px; }
+:global([data-slot="sidebar.workspaces"] [class*="_folder"]:not([class*="_folderActive"])) {
+  position: relative;
+}
+:global([data-slot="sidebar.workspaces"] [class*="_folder"] > svg) { display: none; }
+:global([data-slot="sidebar.workspaces"] [class*="_folder"]::before) {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  background: currentColor;
+  mask: var(--shenhua-workspace) center / contain no-repeat;
+}
+:global([data-slot="sidebar"] [class*="_footArea"]) {
+  border-top: 1px solid var(--shenhua-line);
+  padding-top: 8px;
+}
+:global([data-slot="sidebar"] button:focus-visible),
+:global([data-slot="sidebar"] [role="treeitem"]:focus-visible) {
+  outline: 2px solid var(--dsw-alias-brand-primary);
+  outline-offset: -2px;
+}
+/* Background painting cannot escape the welcome surface or intercept input. */
+:global([data-phase="hero"]:has([data-slot="conversation.hero.brand.mark"])) {
+  background:
+    linear-gradient(110deg, color-mix(in srgb, var(--dsw-alias-bg-base) 98%, transparent), color-mix(in srgb, var(--dsw-alias-bg-base) 88%, transparent)),
+    url("../assets/shanghai-stadium-match-cc0.jpg") center / cover no-repeat,
+    var(--dsw-alias-bg-base);
+}
+:global([data-composer-card]) {
+  border: 1px solid var(--dsw-alias-border-l2);
+  box-shadow: 0 12px 36px #001b3d0c, 0 2px 6px #001b3d06;
+}
+:global([data-composer-card]:focus-within) {
+  border-color: color-mix(in srgb, var(--dsw-alias-brand-primary) 55%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--dsw-alias-brand-primary) 8%, transparent), 0 12px 36px #001b3d0c;
+}
+:global(body) ::selection {
+  background: color-mix(in srgb, var(--dsw-alias-brand-primary) 28%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  :global([data-slot="sidebar"]) *, :global([data-composer-card]) {
+    transition: none !important;
+    animation: none !important;
+  }
+}

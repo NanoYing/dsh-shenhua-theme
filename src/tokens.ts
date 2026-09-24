@@ -1,0 +1,86 @@
+export interface ThemeTokenModes {
+  light: string;
+  dark: string;
+}
+
+export type ThemeTokenOverrides = Record<string, ThemeTokenModes>;
+
+const pair = (light: string, dark: string): ThemeTokenModes =>
+  Object.freeze({ light, dark });
+
+/**
+ * A complete paired semantic palette. Harness selects one half according to
+ * its existing Light / Dark / System preference.
+ */
+export const SHENHUA_TOKENS: ThemeTokenOverrides = Object.freeze({
+  "--dsw-alias-bg-base": pair("#F7F9FC", "#0B1422"),
+  "--dsw-alias-bg-layer-1": pair("#FFFFFF", "#111F32"),
+  "--dsw-alias-bg-layer-2": pair("#EAF1FB", "#122642"),
+  "--dsw-alias-bg-layer-3": pair("#DCE8F7", "#183151"),
+  "--dsw-alias-bg-overlay": pair("#FFFFFF", "#1C3659"),
+  "--dsw-alias-label-primary": pair("#10213A", "#F4F8FF"),
+  "--dsw-alias-label-secondary": pair("#344B68", "#C4D4EA"),
+  "--dsw-alias-label-tertiary": pair("#5C708A", "#91A8C5"),
+  "--dsw-alias-brand-primary": pair("#005BAC", "#58A6FF"),
+  "--dsw-alias-state-business-primary": pair("#005BAC", "#58A6FF"),
+  "--dsw-alias-state-success-primary": pair("#177245", "#5DD39E"),
+  "--dsw-alias-state-warn-primary": pair("#8A4B00", "#FFC857"),
+  "--dsw-alias-state-error-primary": pair("#C52233", "#FF6B7C"),
+  "--dsw-alias-border-l1": pair("rgba(16, 61, 110, 0.12)", "rgba(145, 188, 235, 0.12)"),
+  "--dsw-alias-border-l2": pair("rgba(16, 61, 110, 0.22)", "rgba(145, 188, 235, 0.22)"),
+  "--dsw-alias-interactive-bg-hover": pair("rgba(0, 91, 172, 0.08)", "rgba(88, 166, 255, 0.10)"),
+  "--dsw-alias-interactive-bg-active": pair("rgba(0, 91, 172, 0.15)", "rgba(88, 166, 255, 0.18)"),
+  "--dsw-alias-button-primary-fill": pair("#005BAC", "#237ED0"),
+  "--dsw-alias-button-primary-hover": pair("#004A8C", "#3593E5"),
+  "--dsw-alias-markdown-code-block": pair("#E8F0FA", "#06101D"),
+  "--dsw-alias-markdown-code-block-banner": pair("#DDE9F6", "#0A1A2E"),
+  "--dsw-alias-markdown-inline-code": pair("#E4EEF9", "#102946"),
+  "--dsw-alias-markdown-tag": pair("#E0ECF8", "#102946"),
+  "--dsw-alias-scrollbar-bg-l1": pair("#B7CCE5", "#294767"),
+  "--dsw-alias-scrollbar-hover-l1": pair("#8FADCE", "#3C638A"),
+  "--dsw-alias-tooltip-bg": pair("#10213A", "#DDEBFA"),
+  "--dsw-specific-bubble": pair("#E5F0FF", "#102B4F"),
+  "--dsw-specific-bubble-highlight": pair("#D3E6FF", "#153762"),
+  "--dsw-specific-sidebar-fill": pair("#EDF2F8", "#0D1929"),
+  "--dsw-specific-sidebar-nav-item-active": pair("#DEEAF8", "#173352"),
+  "--dsw-alias-bg-mask-1": pair("rgba(8, 20, 38, 0.48)", "rgba(0, 0, 0, 0.58)"),
+  "--dsw-alias-bg-mask-2": pair("rgba(8, 20, 38, 0.20)", "rgba(0, 0, 0, 0.30)"),
+  "--dsw-alias-bg-mask-3": pair("rgba(8, 20, 38, 0.36)", "rgba(0, 0, 0, 0.50)"),
+  "--dsw-alias-bg-module-platform": pair("#EAF1FB", "#0F2340"),
+  "--dsw-alias-bg-multi-select": pair("#DCEAFF", "#15345B"),
+  "--dsw-alias-bg-skeleton": pair("rgba(0, 91, 172, 0.10)", "rgba(88, 166, 255, 0.10)"),
+  "--dsw-alias-border-l3": pair("rgba(16, 61, 110, 0.30)", "rgba(145, 188, 235, 0.30)"),
+  "--dsw-alias-border-l4": pair("rgba(16, 61, 110, 0.42)", "rgba(145, 188, 235, 0.42)"),
+  "--dsw-alias-border-inverted": pair("rgba(255, 255, 255, 0.20)", "rgba(8, 20, 38, 0.24)"),
+  "--dsw-alias-button-info-fill": pair("#005BAC", "#237ED0"),
+  "--dsw-alias-button-info-hover": pair("#004A8C", "#3593E5"),
+  "--dsw-alias-button-elevated-fill": pair("#FFFFFF", "#132945"),
+  "--dsw-alias-button-floating-fill": pair("#FFFFFF", "#183151"),
+  "--dsw-alias-button-floating-hover": pair("#E7F0FA", "#214263"),
+  "--dsw-alias-interactive-bg-hover-solid": pair("#E5EFFA", "#152E4D"),
+  "--dsw-alias-interactive-bg-hover-danger": pair("rgba(197, 34, 51, 0.10)", "rgba(255, 107, 124, 0.14)"),
+  "--dsw-alias-interactive-bg-hover-accent": pair("rgba(0, 91, 172, 0.12)", "rgba(88, 166, 255, 0.16)"),
+  "--dsw-alias-label-caption": pair("#60748D", "#8EA6C2"),
+  "--dsw-alias-label-primary-inverted": pair("#FFFFFF", "#081426"),
+  "--dsw-alias-label-primary-dimmed": pair("#6B7F97", "#9DB2CC"),
+  "--dsw-alias-label-dimmed": pair("#AAB8C8", "#425977"),
+  "--dsw-alias-markdown-citation": pair("#DFEBF8", "#102946"),
+  "--dsw-alias-markdown-code-segment-selected": pair("#CFDFF0", "#1A3B61"),
+  "--dsw-alias-markdown-code-segment-unselected": pair("#EDF3FA", "#09182A"),
+  "--dsw-alias-markdown-placeholder": pair("#E3EDF8", "#0F2340"),
+  "--dsw-alias-scrollbar-bg-l2": pair("#AFC5DE", "#31516F"),
+  "--dsw-alias-scrollbar-hover-l2": pair("#87A6C8", "#467096"),
+  "--dsw-alias-state-success-secondary": pair("#11613A", "#7BE3B5"),
+  "--dsw-alias-state-warn-secondary": pair("#754000", "#FFD67B"),
+  "--dsw-alias-state-error-secondary": pair("#A51D2B", "#FF8998"),
+  "--dsw-alias-state-success-tertiary": pair("#DDF2E7", "#11392C"),
+  "--dsw-alias-state-warn-tertiary": pair("#FFF0D6", "#402F12"),
+  "--dsw-alias-state-business-tertiary": pair("#DDEBFA", "#102E50"),
+  "--dsw-alias-toast-bg": pair("#FFFFFF", "#17304E"),
+  "--dsw-specific-input-major": pair("#FFFFFF", "#132238"),
+  "--dsw-specific-login-input": pair("#FFFFFF", "#0A1A2E"),
+  "--dsw-specific-menu": pair("#FFFFFF", "#142B48"),
+  "--dsw-specific-selector": pair("#E7F0FB", "#173656"),
+  "--dsw-specific-sidebar-nav-item-hover": pair("#DDEAF9", "#0E2B4D"),
+  "--dsw-specific-tip": pair("#E8F1FB", "#102844"),
+});

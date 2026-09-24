@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>申花 · 蓝血主场 — DeepSeek Harness 主题预览</title>
+    <link rel="icon" href="../assets/shenhua-crest.svg" />
+    <link rel="stylesheet" href="./preview.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside data-slot="sidebar"><div class="sidebar preview_root">
+        <div class="brand-row preview_logoRow">
+          <span data-slot="sidebar.brand.mark"></span>
+          <div class="brand-copy" data-slot="sidebar.brand.name"></div>
+        </div>
+
+        <button class="new-session preview_newSession" aria-label="新建会话"><span class="new-label">新建会话</span><kbd>⌘ N</kbd></button>
+        <nav data-slot="sidebar.workspaces" aria-label="工作区会话">
+          <p class="section-label">工作区</p><div class="project-row preview_projectRow"><span class="preview_folder"></span><strong>theme-shenhua</strong><span>⌄</span></div><div role="tree" aria-label="会话列表">
+          <a class="session active preview_sessionRow" role="treeitem" aria-selected="true" href="#"><span class="dot"></span><span><strong>设计申花主题插件</strong><small>完善配色、品牌与预览</small></span><time>现在</time></a>
+          <a class="session preview_sessionRow" role="treeitem" aria-selected="false" href="#"><span class="dot"></span><span><strong>整理 README 文档</strong><small>安装与卸载说明</small></span><time>12:06</time></a>
+          <a class="session preview_sessionRow" role="treeitem" aria-selected="false" href="#"><span class="dot"></span><span><strong>检查主题对比度</strong><small>WCAG AA 色彩验证</small></span><time>昨天</time></a>
+        </div></nav>
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-foot preview_footArea"><button class="sidebar-action" disabled title="仅在 Harness 中可用"><span>⌘</span> 命令面板</button>
+        <button class="sidebar-action" data-open-settings><span>⚙</span> 设置</button>
+        <div class="profile"><span class="avatar">蓝</span><span><strong>蓝血人</strong><small>本地工作区</small></span><i></i></div>
+      </div>
+        <!-- Like Harness, this fixed modal is a descendant of the sidebar. -->
+        <div class="settings-overlay" hidden>
+          <div class="settings-mask" data-close-settings></div>
+          <section class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+            <header><h2 id="settings-title">设置</h2><button class="icon-button" data-close-settings aria-label="关闭设置">×</button></header>
+            <div class="settings-content"><h3>外观</h3><p>切换主题，检查弹窗、文字与控件的显示。</p>
+              <label for="appearance">颜色模式</label><select id="appearance"><option value="dark">主场之夜 · 深色</option><option value="light">蓝白看台 · 浅色</option></select>
+              <p class="preview-notice">这是主题预览，设置仅作用于当前页面。</p>
+            </div>
+          </section>
+        </div>
+      </div></aside>
+
+      <main data-phase="hero">
+        <header class="topbar">
+          <button class="icon-button" aria-label="切换侧栏" aria-expanded="true" data-toggle-sidebar>☰</button>
+          <div class="title"><strong>新会话</strong><span>theme-shenhua</span></div>
+          <div class="top-actions"><button data-toggle-mode>浅色模式</button><button class="icon-button" data-open-settings aria-label="设置">⚙</button></div>
+        </header>
+
+        <section class="welcome">
+          
+          <div class="welcome-title">
+            <div class="hero-crest" data-slot="conversation.hero.brand.mark"></div>
+            <div><h1>今天想一起完成什么？</h1><p>DEEPSEEK HARNESS <b>预览</b></p></div>
+          </div>
+          <div class="workspace-row"><span>▣</span><strong>theme-shenhua</strong><small>/home/xiny/Documents/theme-shenhua</small><span>⌄</span></div>
+
+          <div class="composer" data-composer-card>
+            <textarea aria-label="任务描述（主题预览）" placeholder="描述任务，或输入 / 查看命令…"></textarea>
+            <div class="composer-footer">
+              <div><button class="round" disabled aria-label="添加附件（仅在 Harness 中可用）">＋</button><button class="tool-button" disabled>标准模式⌄</button><button class="tool-button" disabled>DeepSeek Flash⌄</button></div>
+              <button class="send" aria-label="发送（预览不发送任务）" disabled title="预览不发送任务">↑</button>
+            </div>
+          </div>
+          <div class="quick-actions"><button>解释代码</button><button>修复一个问题</button><button>规划新功能</button></div>
+        </section>
+
+        <footer class="statusbar"><span><i></i> 主题预览 · 不发送任务</span><span>申花 · 蓝血主场</span><span>0.1.0</span></footer>
+      </main>
+    </div>
+    <script src="./preview.js"></script>
+    <script src="../lib/client.js"></script>
+  </body>
+</html>
