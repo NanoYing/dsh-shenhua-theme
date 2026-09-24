@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 declare module "*.module.css" {
   export function mountStyles(): () => void;
   const classes: Record<string, string>;

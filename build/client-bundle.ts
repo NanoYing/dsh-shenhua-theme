@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
@@ -19,6 +20,11 @@ const SVG_PREFIX = "\0shenhua-svg:";
 const JPEG_PREFIX = "\0shenhua-jpeg:";
 const VIRTUAL_SUFFIX = ".mjs";
 
+const LICENSE_BANNER = `/*! dsh-theme-shenhua: code under MPL-2.0; see LICENSE and LICENSING.md.
+ * Source and build files are included in this package.
+ * Inline artwork has separate CC BY-NC-SA / third-party terms; see NOTICE.md.
+ */`;
+
 /** Build the host ESM face and the browser module-table bundle. */
 export function clientBundle(
   id: string,
@@ -34,6 +40,7 @@ export function clientBundle(
       fixedExtension: false,
       dts: true,
       clean: false,
+      outputOptions: { banner: LICENSE_BANNER },
     },
     {
       name: `${id}/client`,
@@ -51,7 +58,7 @@ export function clientBundle(
       plugins: [cssPlugin(id), imagePlugin()],
       outputOptions: {
         entryFileNames: "client.js",
-        banner: `window.__ModuleLoader__.load({ id: ${JSON.stringify(id)}, factory: (require) => {`,
+        banner: `${LICENSE_BANNER}\nwindow.__ModuleLoader__.load({ id: ${JSON.stringify(id)}, factory: (require) => {`,
         footer: "return module.exports; } });",
         intro: "var module = { exports: {} }; var exports = module.exports;",
       },

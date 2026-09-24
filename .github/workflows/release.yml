@@ -1,4 +1,5 @@
 name: Release
+# SPDX-License-Identifier: MPL-2.0
 
 on:
   push:
@@ -28,13 +29,27 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Verify release
-        run: pnpm release:check
+        run: |
+          test "$GITHUB_REF_NAME" = "v$(node -p 'JSON.parse(require("fs").readFileSync("package.json", "utf8")).version')"
+          pnpm release:check
 
       - name: Build release package
         run: |
           pnpm pack --pack-destination dist
+          cp LICENSING.md NOTICE.md dist/
           cd dist
-          sha256sum ./*.tgz > SHA256SUMS.txt
+          sha256sum ./*.tgz LICENSING.md NOTICE.md > SHA256SUMS.txt
+
+      - name: Prepare version notes
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const version = JSON.parse(readFileSync('package.json', 'utf8')).version;
+          const section = readFileSync('CHANGELOG.md', 'utf8').split(/^## /m)
+            .find(text => text.startsWith(`${version} - `));
+          if (!section) throw new Error('Missing release notes');
+          writeFileSync('dist/RELEASE_NOTES.md', `## ${section}\n许可范围和第三方素材说明见附件 LICENSING.md、NOTICE.md。安装包含对应源码和构建配置。\n`);
+          NODE
 
       - name: Publish GitHub Release
         env:
@@ -43,6 +58,8 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
             dist/*.tgz \
             dist/SHA256SUMS.txt \
+            dist/LICENSING.md \
+            dist/NOTICE.md \
             --verify-tag \
             --title "dsh-theme-shenhua $GITHUB_REF_NAME" \
-            --notes-file CHANGELOG.md
+            --notes-file dist/RELEASE_NOTES.md

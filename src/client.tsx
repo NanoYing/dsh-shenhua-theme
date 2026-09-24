@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 import crestUrl from "../assets/shenhua-crest.svg";
 import styles, { mountStyles } from "./theme.module.css";
 import { SHENHUA_TOKENS } from "./tokens.ts";

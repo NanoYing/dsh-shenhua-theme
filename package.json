@@ -1,6 +1,6 @@
 {
   "name": "dsh-theme-shenhua",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "上海申花 · 蓝血主场主题，为 DeepSeek Harness 提供浅色、深色与品牌界面。",
   "type": "module",
   "main": "lib/index.js",
@@ -25,7 +25,16 @@
     "NOTICE.md",
     "COMPATIBILITY.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSES",
+    "LICENSING.md",
+    "CONTRIBUTING.md",
+    "src",
+    "build",
+    "tests",
+    "tsconfig.json",
+    "tsdown.config.ts",
+    "pnpm-lock.yaml"
   ],
   "dsh": {
     "client": {
@@ -54,7 +63,11 @@
     "shanghai-shenhua",
     "上海申花"
   ],
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSING.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NanoYing/dsh-shenhua-theme.git"
+  },
   "engines": {
     "node": ">=22.19"
   },

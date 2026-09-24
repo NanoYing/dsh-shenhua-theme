@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 // Run through the local preview server at /tests/layout.html. No host credentials
 // or agent tasks are used. The fixture nests settings inside the sidebar, as
 // Harness does, so hit-testing catches stacking regressions that tokens cannot.

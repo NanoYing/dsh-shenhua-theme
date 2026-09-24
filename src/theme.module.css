@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: MPL-2.0 */
 /* Slot-scoped host overrides. Class suffixes refer to the Harness 0.1.5
    sidebar/workspace contract; never match generated hashes or translated labels. */
 :global(body) {
@@ -149,7 +150,7 @@
 :global([data-phase="hero"]:has([data-slot="conversation.hero.brand.mark"])) {
   background:
     linear-gradient(110deg, color-mix(in srgb, var(--dsw-alias-bg-base) 98%, transparent), color-mix(in srgb, var(--dsw-alias-bg-base) 88%, transparent)),
-    url("../assets/shanghai-stadium-match-cc0.jpg") center / cover no-repeat,
+    url("../assets/shanghai-stadium-match.jpg") center / cover no-repeat,
     var(--dsw-alias-bg-base);
 }
 :global([data-composer-card]) {

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+<!-- Copyright (c) 2026 dsh-theme-shenhua contributors. See LICENSING.md for prior MIT grants. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="black">
   <!-- Compact three-quarter stadium silhouette with a broad saddle canopy. -->
   <path fill-rule="evenodd" d="M2 13C2 8 10 3 18 3c7 0 12 4 12 8 0 6-10 11-19 10-6-1-9-4-9-8Zm10-5c5-2.5 13-1 13 2 0 4-6 7-10 6-4-1-7-5-3-8Z"/>

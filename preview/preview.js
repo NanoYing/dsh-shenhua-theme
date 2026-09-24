@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 // Minimal renderer for the theme's stateless brand components. Preview loads
 // the real browser bundle, so tokens, imagery and overrides cannot drift.
 const modeButton = document.querySelector('[data-toggle-mode]');

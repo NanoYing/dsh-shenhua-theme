@@ -34,13 +34,13 @@ dsh --profile web
 ```sh
 pnpm build
 pnpm pack --pack-destination dist
-dsh plugin --profile web add ./dist/dsh-theme-shenhua-0.1.0.tgz
+dsh plugin --profile web add ./dist/dsh-theme-shenhua-0.1.1.tgz
 ```
 
-从 GitHub Release 下载 `dsh-theme-shenhua-0.1.0.tgz` 后，可以直接安装，无需解压：
+从 GitHub Release 下载 `dsh-theme-shenhua-0.1.1.tgz` 后，可以直接安装，无需解压：
 
 ```sh
-dsh plugin --profile web add ./dsh-theme-shenhua-0.1.0.tgz
+dsh plugin --profile web add ./dsh-theme-shenhua-0.1.1.tgz
 dsh --profile web
 ```
 
@@ -57,7 +57,7 @@ dsh plugin --profile web remove dsh-theme-shenhua
 链接式源码安装在重新执行 `pnpm build` 后即可取得最新产物。tarball 安装请先打出新包，再执行：
 
 ```sh
-dsh plugin --profile web update ./dist/dsh-theme-shenhua-0.1.0.tgz
+dsh plugin --profile web update ./dist/dsh-theme-shenhua-0.1.1.tgz
 ```
 
 ## 开发验证
@@ -89,4 +89,14 @@ pnpm release:check
 - 队徽、队徽豹头、球场图标、豹纹与球场背景在构建时内联进浏览器 bundle，离线环境也能正常显示。
 - 安装层会停用 Harness 的官方侧栏品牌占位，由申花队徽和字标接管；卸载主题后该补丁撤销，官方品牌恢复。
 
-代码以 MIT 许可发布。上海申花队徽及相关名称、商标不包含在 MIT 授权范围内，详情见 [NOTICE.md](NOTICE.md)。
+## 许可与球迷共建
+
+自 v0.1.1 起，代码、CSS 和文档采用 **MPL-2.0**：对外分发受覆盖文件的修改时，需按协议提供对应源码。MPL 允许商业使用；不要求独立宿主或不含本项目代码的新文件整体开源。
+
+原创球场、豹纹 SVG 采用 **CC BY-NC-SA 4.0**：署名、限非商业用途、分享改编作品时遵守相同方式共享条件。安装包附带源码、构建文件和完整协议。
+
+队徽、队徽豹头、比赛照片及截图中的第三方权利不由本项目再授权，当前仓库也未提供其完整再分发授权证据。非官方声明、非商业用途或更换协议不能代替授权。
+
+**旧版 v0.1.0 已授出的 MIT 权利仍有效**，包括旧版相同代码和原创图形；本次更改不追溯撤销这些权利。完整主题包含非商业和第三方素材，不应作为整体宣称可自由商用。
+
+详见 [许可范围](LICENSING.md)、[MPL 正文](LICENSE)、[素材声明](NOTICE.md) 和 [贡献说明](CONTRIBUTING.md)。

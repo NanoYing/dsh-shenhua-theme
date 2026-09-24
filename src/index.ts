@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 /** Public package metadata; the actual theme runs in the browser client entry. */
 export const themeName = "申花 · 蓝血主场";
 export const themeId = "dsh-theme-shenhua";
