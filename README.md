@@ -22,7 +22,7 @@
 > ```sh
 > pnpm install     # 安装构建依赖（唯一需要联网的一步）
 > pnpm build       # 生成运行文件
-> pnpm pack:local  # 打包成 dist/dsh-theme-shenhua-<version>.tgz
+> pnpm pack:local  # 打包成 dist/dsh-theme-shenhua-<当前版本号>.tgz
 > ```
 >
 > 之后按下面的方式把打包文件装进 Harness 即可。
@@ -40,9 +40,9 @@
 #### 方法 A：桌面端图形界面添加（推荐）
 1. 打开 DeepSeek Harness 桌面客户端，点击左侧边栏的「**插件 (Plugins)**」图标；
 2. 点击右上角的「**添加插件**」(Add Plugin) 按钮；
-3. 输入打包文件或目录的绝对路径，例如：
+3. 输入上一步生成的打包文件路径，例如：
    ```text
-   C:\Users\xdani\Documents\dsh-shenhua-theme\dist\dsh-theme-shenhua-0.2.6.tgz
+   .\dist\dsh-theme-shenhua-<版本号>.tgz
    ```
 4. 点击确认安装，安装完成后点击「**立即启用**」(Enable Now) 即可实时生效。
 
@@ -50,7 +50,7 @@
 使用 Electron 安装目录内自带的 `dsh.cmd`（自带桌面 profile 管理权限）：
 
 ```powershell
-& "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add C:\Users\xdani\Documents\dsh-shenhua-theme\dist\dsh-theme-shenhua-0.2.6.tgz
+& "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add .\dist\dsh-theme-shenhua-<版本号>.tgz
 ```
 
 ### 2. Web Profile（命令行与无头环境）
@@ -61,7 +61,7 @@
 # 安装打包产物
 pnpm build
 pnpm pack:local
-dsh plugin --profile web add ./dist/dsh-theme-shenhua-0.2.6.tgz
+dsh plugin --profile web add ./dist/dsh-theme-shenhua-<版本号>.tgz
 dsh --profile web
 
 # 或源码安装
@@ -89,10 +89,10 @@ dsh plugin --profile web remove dsh-theme-shenhua
 
 ```sh
 # 桌面版升级
-dsh plugin --profile desktop update ./dist/dsh-theme-shenhua-0.2.6.tgz
+dsh plugin --profile desktop update ./dist/dsh-theme-shenhua-<版本号>.tgz
 
 # Web 版升级
-dsh plugin --profile web update ./dist/dsh-theme-shenhua-0.2.6.tgz
+dsh plugin --profile web update ./dist/dsh-theme-shenhua-<版本号>.tgz
 ```
 
 ## 开发

@@ -33,8 +33,7 @@
     "build",
     "tests",
     "tsconfig.json",
-    "tsdown.config.ts",
-    "pnpm-lock.yaml"
+    "tsdown.config.ts"
   ],
   "dsh": {
     "client": {

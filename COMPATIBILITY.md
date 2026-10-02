@@ -22,7 +22,7 @@
      * **方式 A（GUI 最推荐）**：在桌面客户端左侧栏打开「**插件 (Plugins)**」→ 点击右上角「**添加插件**」→ 输入本地路径或 tgz 路径即可安装启用。
      * **方式 B（桌面专用 CLI）**：使用桌面安装包内置的 `dsh.cmd`（携带 `manageDesktopProfile` 特权），例如：
        ```powershell
-       & "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add ./dist/dsh-theme-shenhua-0.2.6.tgz
+       & "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add ./dist/dsh-theme-shenhua-<版本号>.tgz
        ```
 
 2. **工作区模块拆包兼容**
