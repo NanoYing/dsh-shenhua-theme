@@ -1,0 +1,13 @@
+<!-- SPDX-License-Identifier: CC-BY-NC-SA-4.0 -->
+<!-- Copyright (c) 2026 dsh-theme-shenhua contributors. See LICENSING.md for prior MIT grants. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- The 2026 away kit prints the crest leopard's coat across the fabric with a
+       deliberately random layout (Nike notes the pattern "may not be identical"),
+       so this mark is a scatter of the same spots: one rosette — a ring whose
+       centre is left open — plus a solid patch and a fleck, each an irregular
+       blob rather than a circle. Solid fills plus a generous rosette keep the
+       hole readable once the sidebar masks the mark down to 16px. -->
+  <path fill="black" fill-rule="evenodd" d="M14.31 9.20C14.19 10.36 13.34 11.35 12.53 12.33C11.71 13.30 10.42 15.05 9.40 15.02C8.38 15.00 7.35 13.14 6.43 12.17C5.51 11.20 4.00 10.29 3.90 9.20C3.80 8.11 4.93 6.34 5.85 5.65C6.77 4.96 8.17 5.09 9.40 5.04C10.63 4.99 12.42 4.67 13.23 5.37C14.05 6.06 14.42 8.04 14.31 9.20ZM12.28 9.00C12.29 9.64 12.08 10.63 11.65 10.95C11.22 11.27 10.35 10.91 9.70 10.92C9.05 10.92 8.17 11.30 7.72 10.98C7.28 10.66 6.92 9.56 7.02 9.00C7.12 8.44 7.87 8.06 8.32 7.62C8.76 7.17 9.16 6.42 9.70 6.33C10.24 6.25 11.16 6.67 11.58 7.12C12.01 7.56 12.27 8.36 12.28 9.00Z"/>
+  <path fill="black" fill-rule="evenodd" d="M22.68 17.00C22.88 17.96 22.10 19.69 21.29 20.49C20.47 21.29 18.75 22.03 17.80 21.82C16.85 21.60 16.28 20.02 15.58 19.22C14.89 18.41 13.69 17.82 13.61 17.00C13.53 16.18 14.39 14.96 15.08 14.28C15.78 13.61 16.97 12.87 17.80 12.94C18.63 13.01 19.27 14.04 20.08 14.72C20.90 15.39 22.48 16.04 22.68 17.00Z"/>
+  <path fill="black" fill-rule="evenodd" d="M18.90 4.60C18.79 5.14 18.79 5.53 18.50 5.90C18.22 6.28 17.73 6.75 17.20 6.85C16.67 6.94 15.63 6.86 15.32 6.48C15.00 6.11 15.22 5.13 15.32 4.60C15.42 4.07 15.58 3.63 15.90 3.30C16.21 2.96 16.66 2.70 17.20 2.59C17.74 2.48 18.88 2.31 19.16 2.64C19.44 2.98 19.01 4.06 18.90 4.60Z"/>
+</svg>

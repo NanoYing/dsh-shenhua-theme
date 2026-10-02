@@ -42,9 +42,19 @@ button { color: inherit; }
 .brand-copy { display: flex; flex-direction: column; line-height: 1; }
 .brand-copy strong { font-size: 16px; font-weight: 800; }
 .brand-copy span { margin-top: 5px; color: var(--brand); font-family: ui-monospace, monospace; font-size: 8px; font-weight: 800; letter-spacing: .13em; }
-.new-session { display: flex; align-items: center; gap: 8px; height: 38px; margin: 19px 3px 14px; padding: 0 11px; border: 1px solid var(--border2); border-radius: 9px; background: var(--layer1); box-shadow: 0 1px 2px rgba(0, 27, 66, .05); font-weight: 600; }
-.new-session > span { color: var(--brand); font-size: 19px; font-weight: 400; }
-.new-session kbd { margin-left: auto; color: var(--text3); font-size: 10px; font-weight: 500; }
+/* Mirrors the Harness 0.2.0 button: a centred 100cqw content box plus a trailing
+   shortcut chip, so a theme glyph swap lands inside the same box the host centres. */
+.new-session { display: flex; align-items: center; justify-content: center; height: 38px; margin: 19px 3px 14px; padding: 0 11px; border: 1px solid var(--border2); border-radius: 9px; background: var(--layer1); box-shadow: 0 1px 2px rgba(0, 27, 66, .05); font-weight: 600; overflow: hidden; container-type: inline-size; }
+.preview_newSessionLabelMask { flex: 1; min-width: 0; }
+.preview_newSessionContent { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100cqw; }
+.preview_newSessionContent > svg { flex: none; color: var(--brand); }
+/* Mirrors the Harness shortcut chip: hidden until hover, keycaps painted with
+   --dsw-alias-label-tertiary exactly as the host does, so the theme is forced to
+   keep the hint readable on the brand button instead of hiding the regression. */
+.preview_newSessionShortcut { display: inline-flex; flex: none; opacity: 0; pointer-events: none; font-weight: 400; }
+.new-session:is(:hover, :focus-visible) .preview_newSessionShortcut { opacity: 1; }
+.preview_keys { display: inline-flex; flex: none; align-items: center; gap: 3px; color: var(--dsw-alias-label-tertiary); font-size: 12px; line-height: 16px; white-space: nowrap; }
+.preview_key, .preview_separator { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; font: inherit; }
 .section-label { margin: 14px 10px 7px; color: var(--text3); font-size: 11px; font-weight: 700; letter-spacing: .04em; }
 .session { display: grid; grid-template-columns: 7px minmax(0, 1fr) auto; align-items: start; gap: 9px; margin: 3px 0; padding: 10px 10px; color: var(--text2); border: 1px solid transparent; border-radius: 9px; text-decoration: none; }
 .session.active { border-color: var(--border); background: var(--active); color: var(--text); }
@@ -105,9 +115,16 @@ aside { min-width: 0; height: 100%; }
 .sidebar { height: 100%; padding: 18px 14px 14px; }
 .brand-row { height: 46px; gap: 12px; }
 .brand-row [data-slot] { display: inline-flex; }
-.new-session { justify-content: flex-start; cursor: pointer; }
-.new-session kbd { color: #b9d6f2; }
-.new-session > .new-label { color: inherit; font-size: 13px; }
+.new-session { cursor: pointer; }
+.new-session .new-label { color: inherit; font-size: 13px; }
+/* Mirrors the Harness panel row that sits between the new-session button and the
+   workspace tree: glyph slot first, then the title. */
+.panel-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.panel-row { display: flex; align-items: center; gap: 8px; min-height: 36px; margin: 0 2px; padding: 7px 8px; border: 0; border-radius: 10px; background: transparent; color: var(--text); font-size: 14px; text-align: left; cursor: pointer; }
+.panel-row:hover { background: var(--dsw-alias-interactive-bg-hover); }
+.preview_panelGlyph { display: inline-flex; flex: none; align-items: center; justify-content: center; }
+.preview_panelGlyph > svg { flex: none; }
+.panel-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .project-row { display: flex; align-items: center; gap: 9px; padding: 10px; margin: 2px 0 8px; font-size: 12px; }
 .project-row > span:last-child { margin-left: auto; color: var(--text3); }
 .session { margin-block: 5px; padding: 12px 10px; }
@@ -139,7 +156,9 @@ aside { min-width: 0; height: 100%; }
 .app-shell.rail { grid-template-columns: 56px minmax(0, 1fr); }
 .rail .sidebar { align-items: center; padding-inline: 9px; }
 .rail .brand-row { padding: 0; }
-.rail .brand-row .brand-copy, .rail nav, .rail .sidebar-foot, .rail .new-label, .rail kbd { display: none; }
+.rail .brand-row .brand-copy, .rail .workspaces, .rail .sidebar-foot, .rail .new-label, .rail .preview_newSessionShortcut, .rail .panel-title { display: none; }
+.rail .panel-row { width: 36px; height: 36px; justify-content: center; margin: 0; padding: 0; }
+.rail .panel-list { gap: 12px; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
 @media (max-width: 720px) {
   .app-shell { grid-template-columns: 56px minmax(0, 1fr); }

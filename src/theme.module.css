@@ -7,10 +7,12 @@
   --shenhua-line: color-mix(in srgb, var(--dsw-alias-brand-primary) 13%, transparent);
   --shenhua-new-session: url("../assets/shenhua-crest-leopard.svg");
   --shenhua-workspace: url("../assets/shenhua-stadium.svg");
+  --shenhua-panel: url("../assets/shenhua-leopard-spots.svg");
 }
 :global(body[data-ds-dark-theme]) {
   --shenhua-red: #ef6373;
   --shenhua-ink: #78b8ff;
+  --shenhua-line: color-mix(in srgb, var(--dsw-alias-brand-primary) 26%, transparent);
 }
 .crestFrame {
   position: relative;
@@ -79,9 +81,12 @@
   gap: 11px;
   height: 34px;
 }
-:global([data-slot="sidebar"] button[class*="_newSession"]) {
+/* New session: keep the host button, its accessible name and click handler, and
+   re-skin the expanded surface only. Scoping to the expanded root keeps the rail
+   (36px ghost button) and the Windows titlebar circle (28px, fixed in the titlebar)
+   on the host's own geometry instead of fighting it. */
+:global([data-slot="sidebar"] [class*="_root"]:not([class*="_collapsed"]) button[class*="_newSession"]) {
   height: 42px;
-  gap: 10px;
   margin-bottom: 16px;
   border: 1px solid color-mix(in srgb, var(--dsw-alias-brand-primary) 22%, transparent);
   border-radius: 12px;
@@ -90,29 +95,66 @@
   color: #fff;
   font-weight: 600;
 }
-:global([data-slot="sidebar"] button[class*="_newSession"]:hover) {
+:global([data-slot="sidebar"] [class*="_root"]:not([class*="_collapsed"]) button[class*="_newSession"]:hover) {
   background: linear-gradient(115deg, #086abe, #005497);
   box-shadow: 0 5px 16px #003f7930;
 }
-/* Keep the original button, its accessible name and click handler. */
-:global([data-slot="sidebar"] button[class*="_newSession"] > svg) { display: none; }
-:global([data-slot="sidebar"] button[class*="_newSession"]::before) {
+/* Harness fades the "Ctrl + N" hint in on hover and paints its keycaps with
+   --dsw-alias-label-tertiary, which is a mid grey-blue chosen for the host's
+   white button: on the brand gradient it drops to roughly 1.5:1. Restate the
+   hint in the button's own foreground, and re-inherit it inside the keycaps
+   because the host sets their colour explicitly on the inner key row. */
+:global([data-slot="sidebar"] [class*="_root"]:not([class*="_collapsed"]) button[class*="_newSession"] [class*="_newSessionShortcut"]) {
+  color: #ffffffd1;
+  font-weight: 500;
+}
+:global([data-slot="sidebar"] [class*="_root"]:not([class*="_collapsed"]) button[class*="_newSession"] [class*="_newSessionShortcut"] *) {
+  color: inherit;
+}
+/* The glyph and label sit in .newSessionContent, which the host centres with
+   width:100cqw. Swapping the glyph therefore has to happen inside that box: hide
+   the host glyph and paint the crest leopard in the same flex flow. A ::before on
+   the button itself would sit outside the 100cqw box and push the content out. */
+:global([data-slot="sidebar"] button[class*="_newSession"] [class*="_newSessionContent"] > svg) {
+  display: none;
+}
+:global([data-slot="sidebar"] button[class*="_newSession"] [class*="_newSessionContent"])::before {
   content: "";
   display: block;
   flex: none;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   background: currentColor;
   mask: var(--shenhua-new-session) center / contain no-repeat;
 }
-:global([data-slot="sidebar"] [class*="_collapsed"] button[class*="_newSession"]) {
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  gap: 0;
-  margin: 0 0 12px;
+/* Rail and titlebar render the glyph at 16px; match it so the circle stays centred. */
+:global([data-slot="sidebar"] [class*="_collapsed"] button[class*="_newSession"] [class*="_newSessionContent"])::before {
+  width: 16px;
+  height: 16px;
 }
 :global([data-slot="sidebar"] [class*="_panelRow"]) { border-radius: 10px; }
+/* Panel glyphs come from the sidebar.panellist slot — today the plugin pinwheel
+   and the task clock. Swap every occupant for the leopard spots of the 2026 away
+   kit: hide the occupant's own glyph and paint the mark into the same flex slot at
+   the edge the sidebar asked the occupant for (16px expanded, 18px in the rail).
+   The occupant is NOT a direct child: slot outlets render as
+   span._panelGlyph > div[data-slot="sidebar.panellist"][style="display:contents"]
+   > svg, so the hide rule has to match descendants. Scoping it with ">" silently
+   left the host pinwheel on screen beside the mask mark. */
+:global([data-slot="sidebar"] [class*="_panelGlyph"] svg) { display: none; }
+:global([data-slot="sidebar"] [class*="_panelGlyph"])::before {
+  content: "";
+  display: block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  mask: var(--shenhua-panel) center / contain no-repeat;
+}
+:global([data-slot="sidebar"] [class*="_collapsed"] [class*="_panelGlyph"])::before {
+  width: 18px;
+  height: 18px;
+}
 :global([data-slot="sidebar.workspaces"] [role="treeitem"][aria-selected="true"]),
 :global([data-slot="sidebar"] [class*="_panelActive"]) {
   background: var(--dsw-specific-sidebar-nav-item-active);
@@ -152,6 +194,25 @@
     linear-gradient(110deg, color-mix(in srgb, var(--dsw-alias-bg-base) 98%, transparent), color-mix(in srgb, var(--dsw-alias-bg-base) 88%, transparent)),
     url("../assets/shanghai-stadium-match.jpg") center / cover no-repeat,
     var(--dsw-alias-bg-base);
+}
+/* The light recipe rests on a near-white veil, which happens to leave the match
+   photo readable. Flip that veil to near-black on the night palette and the same
+   percentages turn the photo into a flat dark panel — the theme looks like it has
+   no background at all. Dark mode therefore gets its own, looser veil (and the
+   sidebar compares at its own weight: doubled spot texture for the dark fill,
+   a stronger corner glow and a more present hairline). */
+:global(body[data-ds-dark-theme] [data-phase="hero"]:has([data-slot="conversation.hero.brand.mark"])) {
+  background:
+    linear-gradient(110deg, color-mix(in srgb, var(--dsw-alias-bg-base) 86%, transparent), color-mix(in srgb, var(--dsw-alias-bg-base) 60%, transparent)),
+    url("../assets/shanghai-stadium-match.jpg") center / cover no-repeat,
+    var(--dsw-alias-bg-base);
+}
+:global(body[data-ds-dark-theme] [data-slot="sidebar"] [class*="_root"]:has(> [class*="_logoRow"])) {
+  background:
+    url("../assets/shenhua-spots.svg") top right / 140px 140px repeat,
+    url("../assets/shenhua-spots.svg") top right / 140px 140px repeat,
+    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--dsw-alias-brand-primary) 17%, transparent), transparent 55%),
+    var(--dsw-specific-sidebar-fill);
 }
 :global([data-composer-card]) {
   border: 1px solid var(--dsw-alias-border-l2);

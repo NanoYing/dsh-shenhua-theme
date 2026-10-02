@@ -1,6 +1,6 @@
 {
   "name": "dsh-theme-shenhua",
-  "version": "0.1.2",
+  "version": "0.2.6",
   "description": "上海申花 · 蓝血主场主题，为 DeepSeek Harness 提供浅色、深色与品牌界面。",
   "type": "module",
   "main": "lib/index.js",
@@ -41,6 +41,7 @@
       "inject": [
         "@deepseek-ai/dsh-client-ui-theme",
         "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace",
         "@deepseek-ai/dsh-client-ui-conversation"
       ],
       "platform": "web"
@@ -72,7 +73,7 @@
     "node": ">=22.19"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "^4.0.2"
+    "@deepseek-ai/cordis": "^4.0.0"
   },
   "peerDependenciesMeta": {
     "@deepseek-ai/cordis": {

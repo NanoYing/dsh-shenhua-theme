@@ -2,3 +2,6 @@ node_modules/
 dist/
 lib/
 .DS_Store
+# Local agent tooling data (work logs, review reports). Shipping in the release
+# archive on purpose, but kept out of version control.
+.workbuddy/
